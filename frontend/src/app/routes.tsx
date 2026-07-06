@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { EquipmentDetailsPage } from '../features/equipment/pages/EquipmentDetailsPage'
 import { EquipmentPage } from '../features/equipment/pages/EquipmentPage'
 import { LocationsPage } from '../features/locations/pages/LocationsPage'
+import { LocationDetailsPage } from '../features/locations/pages/LocationDetailsPage'
 
 export function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ export function AppRoutes() {
 
       {/* Esta rota mostra que o layout pode ser compartilhado por mais de uma página */}
       <Route path="/locations" element={<LocationsPage />} />
+      <Route path="/locations/:locationId" element={<LocationDetailsPage />} />
 
       {/* Qualquer rota desconhecida volta para a tela principal para evitar tela em branco. */}
       <Route path="*" element={<Navigate to="/equipment" replace />} />
