@@ -1,5 +1,6 @@
 import { message } from 'antd'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AppLayout } from '../../../../app/layout/AppLayout'
 import { EquipmentFilters } from '../../components/EquipmentFilters'
 import { EquipmentFormModal } from '../../components/EquipmentFormModal'
@@ -20,6 +21,7 @@ import { Container } from './styles'
 
 export function EquipmentPage() {
   const [messageApi, contextHolder] = message.useMessage()
+  const navigate = useNavigate()
 
   // Estados dos filtros. Cada campo da área de filtros controla um estado aqui.
   const [searchText, setSearchText] = useState('')
@@ -35,6 +37,10 @@ export function EquipmentPage() {
     setFormMode('create')
     setEquipmentInForm(undefined)
     setIsFormModalOpen(true)
+  }
+
+  function handleViewEquipment(equipment: Equipment) {
+    navigate(`/equipment/${equipment.id}`)
   }
 
   function handleEditEquipment(equipment: Equipment) {
@@ -109,6 +115,7 @@ export function EquipmentPage() {
           onChangeStatusEquipment={setEquipmentInStatus}
           onEditEquipment={handleEditEquipment}
           onRemoveEquipment={setEquipmentToRemove}
+          onViewEquipment={handleViewEquipment}
         />
 
         <EquipmentFormModal

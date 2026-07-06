@@ -1,13 +1,16 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 // AULA 06:
 // Vamos ativar esta página quando criarmos a rota dinâmica de detalhes.
-// import { EquipmentDetailsPage } from '../features/equipment/pages/EquipmentDetailsPage'
+import { EquipmentDetailsPage } from '../features/equipment/pages/EquipmentDetailsPage'
 import { EquipmentPage } from '../features/equipment/pages/EquipmentPage'
 import { LocationsPage } from '../features/locations/pages/LocationsPage'
 
 export function AppRoutes() {
   return (
     <Routes>
+      
+      <Route path="/equipment/:equipmentId" element={<EquipmentDetailsPage />} />
+
       {/* A rota raiz manda o usuário para a primeira tela que existe na aplicação. */}
       <Route path="/" element={<Navigate to="/equipment" replace />} />
 
